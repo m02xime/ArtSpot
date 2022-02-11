@@ -15,6 +15,14 @@ const routes: Routes = [
     path: 'show/:id',
     loadChildren: () => import('./show/show.module').then( m => m.ShowPageModule)
   },
+  {
+    path: 'view',
+    loadChildren: () => import('./view/view.module').then( m => m.ViewPageModule)
+  },
+  {
+    path: 'add',
+    loadChildren: () => import('./add/add.module').then( m => m.AddPageModule)
+  },
 ];
 
 @NgModule({

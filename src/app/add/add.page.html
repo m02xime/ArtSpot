@@ -1,0 +1,34 @@
+<app-header title="Ajouter une oeuvre"></app-header>
+
+<ion-content>
+    <form #oeuvreForm="ngForm" (ngSubmit)="save()">
+        <ion-item>
+            <ion-label position="floating">Nom</ion-label>
+            <ion-input [(ngModel)]="oeuvre.name" name="name" required
+                       minlength="3" maxlength="60" #name="ngModel"></ion-input>
+        </ion-item>
+        <app-error *ngIf="!name.valid && name.touched"
+                   message="Vous devez saisir un nom entre 3 et 60 caractères"></app-error>
+
+        <ion-item>
+            <ion-label position="floating">URL de l'image</ion-label>
+            <ion-input [(ngModel)]="oeuvre.picture" name="picture" required
+                       pattern="https://.*" #picture="ngModel"></ion-input>
+        </ion-item>
+        <app-error *ngIf="!picture.valid && picture.touched"
+                   message="Vous devez saisir une URL valide"></app-error>
+
+        <ion-item>
+            <ion-label>localisation</ion-label>
+            <ion-select [(ngModel)]="oeuvre.localisation" name="location" required #location="ngModel">
+                <ion-select-option *ngFor="let loc of location" value="{{loc.code|lowercase }}">
+                    {{ location.name }}
+                </ion-select-option>
+            </ion-select>
+        </ion-item>
+        <app-error *ngIf="!country.valid && country.touched"
+                   message="Vous devez séléctionner une localisation"></app-error>
+
+        <ion-button type="submit" size="large" [disabled]="!oeuvreForm.form.valid">Ajouter</ion-button>
+    </form>
+</ion-content>
