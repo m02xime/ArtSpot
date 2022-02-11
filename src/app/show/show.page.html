@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>show</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="oeuvre; else error">
+    <img [src]="oeuvre.picture" [alt]="oeuvre.name" class="cover">
+    <h1>
+        {{ oeuvre.name }}
+    </h1>
+    <p>
+        {{ oeuvre.location }}
+    </p>
+    <p>
+      publié le : {{ oeuvre.date }}
+  </p>
+
+</div>
+</ion-content>

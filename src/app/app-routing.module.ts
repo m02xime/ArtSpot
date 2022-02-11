@@ -11,6 +11,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'show/:id',
+    loadChildren: () => import('./show/show.module').then( m => m.ShowPageModule)
+  },
 ];
 
 @NgModule({
